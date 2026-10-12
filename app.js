@@ -3,8 +3,9 @@ const express = require('express');
 const redis = require('redis');
 
 const app = express();
+
 const client = redis.createClient({
-  url: 'redis://redis-db:6379'
+  url: process.env.REDIS_URL || 'redis://redis-db:6379'
 });
 
 client.on('error', (err) => {
